@@ -1,0 +1,72 @@
+  CHK     include/config/kernel.release
+  GEN     ./Makefile
+  CHK     include/generated/uapi/linux/version.h
+  CHK     include/generated/utsrelease.h
+  Using .. as source for kernel
+  CHK     scripts/mod/devicetable-offsets.h
+  CHK     include/generated/timeconst.h
+  CHK     include/generated/bounds.h
+  CHK     include/generated/asm-offsets.h
+  CALL    ../scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  CHK     kernel/config_data.h
+-- KernelSU-Next Git repo detected at: /home/sam/ksu/kernel/android_kernel_samsung_exynos9820/KernelSU-Next
+-- KernelSU-Next version: 33189
+-- KernelSU-Next tag: v3.2.0-legacy
+-- KernelSU-Next Manager signature size: 0x3e6
+-- KernelSU-Next Manager signature hash: 79e590113c4c4c0c222978e413a5faa801666957b1212a328e46c00c69821bf7
+-- KernelSU-Next: Hook mode: Kprobes
+  CC      drivers/kernelsu/core/init.o
+  CC      drivers/kernelsu/compat/kernel_compat.o
+  CC      drivers/kernelsu/feature/kernel_umount.o
+  CC      drivers/kernelsu/feature/sulog.o
+  CC      drivers/kernelsu/feature/sucompat.o
+  CC      drivers/kernelsu/hook/hook_manager.o
+  CC      drivers/kernelsu/hook/lsm_hooks.o
+  CC      drivers/kernelsu/hook/setuid_hook.o
+  CC      drivers/kernelsu/extras.o
+  CC      drivers/kernelsu/infra/file_wrapper.o
+  CC      drivers/kernelsu/infra/event_queue.o
+  CC      drivers/kernelsu/infra/seccomp_cache.o
+  CC      drivers/kernelsu/infra/su_mount_ns.o
+  CC      drivers/kernelsu/manager/apk_sign.o
+  CC      drivers/kernelsu/manager/throne_tracker.o
+  CC      drivers/kernelsu/manager/pkg_observer.o
+  CC      drivers/kernelsu/policy/allowlist.o
+  CC      drivers/kernelsu/policy/app_profile.o
+  CC      drivers/kernelsu/policy/feature.o
+  CC      drivers/kernelsu/runtime/boot_event.o
+  CC      drivers/kernelsu/runtime/ksud_integration.o
+  CC      drivers/kernelsu/selinux/selinux.o
+  CC      drivers/kernelsu/selinux/rules.o
+  CC      drivers/kernelsu/selinux/sepolicy.o
+  CC      drivers/kernelsu/sulog/event.o
+  CC      drivers/kernelsu/sulog/fd.o
+  CC      drivers/kernelsu/supercall/dispatch.o
+  CC      drivers/kernelsu/supercall/perm.o
+  CC      drivers/kernelsu/supercall/supercall.o
+  CC      drivers/kernelsu/feature/adb_root.o
+  AR      drivers/kernelsu/kernelsu.o
+  AR      drivers/kernelsu/built-in.o
+  AR      drivers/built-in.o
+  GEN     .version
+  CHK     include/generated/compile.h
+  UPD     include/generated/compile.h
+  CC      init/version.o
+  AR      init/built-in.o
+  AR      built-in.o
+  LD      vmlinux.o
+  MODPOST vmlinux.o
+ld.lld: error: undefined symbol: ksu_selinux_hide_init
+>>> referenced by init.c:115 (/home/sam/ksu/kernel/android_kernel_samsung_exynos9820/out/../drivers/kernelsu/core/init.c:115)
+>>>               drivers/kernelsu/core/init.o:(kernelsu_init) in archive built-in.o
+>>> referenced by init.c:147 (/home/sam/ksu/kernel/android_kernel_samsung_exynos9820/out/../drivers/kernelsu/core/init.c:147)
+>>>               drivers/kernelsu/core/init.o:(kernelsu_init) in archive built-in.o
+>>> referenced by hook_manager.c:388 (/home/sam/ksu/kernel/android_kernel_samsung_exynos9820/out/../drivers/kernelsu/hook/hook_manager.c:388)
+>>>               drivers/kernelsu/hook/hook_manager.o:(ksu_syscall_hook_manager_init) in archive built-in.o
+
+ld.lld: error: undefined symbol: ksu_selinux_hide_exit
+>>> referenced by hook_manager.c:408 (/home/sam/ksu/kernel/android_kernel_samsung_exynos9820/out/../drivers/kernelsu/hook/hook_manager.c:408)
+>>>               drivers/kernelsu/hook/hook_manager.o:(ksu_syscall_hook_manager_exit) in archive built-in.o
+make[1]: *** [/home/sam/ksu/kernel/android_kernel_samsung_exynos9820/Makefile:1256: vmlinux] Error 1
+make: *** [Makefile:153: sub-make] Error 2
